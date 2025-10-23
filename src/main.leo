@@ -65,8 +65,8 @@ program bukky_token.aleo {
         address_check.await();
 
         // TODO: Fill in here
-        let current_amount: u64 = Mapping ::get_or_use(balance, recipient, 0u64);
-        Mapping::set(balance, recipient, current_amount + amount);
+        let current_amount: u64 = Mapping ::get_or_use(balances, recipient, 0u64);
+        Mapping::set(balances, recipient, current_amount + amount);
     }
 
 
@@ -139,7 +139,7 @@ program bukky_token.aleo {
         public amount: u64
     ) -> Future {
         // TODO: Fill in here
-        let address_check: Future = workshop_ofac/address_check(recipient);
+        let address_check: Future = workshop_ofac.aleo/address_check(recipient);
 
         return transfer_public_onchain(self.signer, recipient, amount, address_check);
     }
@@ -152,11 +152,11 @@ program bukky_token.aleo {
         // TODO: Fill in here
         address_check.await();
 
-        let sender_amount: u64 = Mapping::get_or_use(balance, sender, 0u64);
-        Mapping::set(balance, sender, sender_amount - amount);
+        let sender_amount: u64 = Mapping::get_or_use(balances, sender, 0u64);
+        Mapping::set(balances, sender, sender_amount - amount);
 
-        let receiver_amount: u64 = Mapping::get_or_use(balance, recipient, 0u64);
-        Mapping::set(balance, recipient, receiver_amount + amount);
+        let receiver_amount: u64 = Mapping::get_or_use(balances, recipient, 0u64);
+        Mapping::set(balances, recipient, receiver_amount + amount);
 
     }
 
