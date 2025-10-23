@@ -1,5 +1,5 @@
 // The 'test_token' test program.
-import token.aleo;
+import bukky_token.aleo;
 program test_token.aleo {
     @test
     script test_it() {

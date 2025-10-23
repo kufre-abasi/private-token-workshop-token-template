@@ -2,3 +2,4 @@
 *.prover
 *.verifier
 outputs/
+.env
